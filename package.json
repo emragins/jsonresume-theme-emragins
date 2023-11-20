@@ -1,0 +1,21 @@
+{
+  "name": "jsonresume-theme-emragins",
+  "version": "0.0.1",
+  "description": "Compact, printable theme for JSON Resume with nested projects under work",
+  "author": "emragins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emragins/jsonresume-theme-emragins.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^2.0.0-alpha.4",
+    "css": "2.2.x"
+  },
+  "bugs": {
+    "url": "https://github.com/emragins/jsonresume-theme-emragins/issues"
+  },
+  "homepage": "https://github.com/emragins/jsonresume-theme-emragins",
+  "main": "index.js",
+  "devDependencies": {}
+}
