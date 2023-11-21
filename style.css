@@ -4,25 +4,30 @@ body {
   line-height: 1.4;
   margin: 40px 0;
 }
+
 em {
   color: #999;
 }
+
 p {
   line-height: 1.4;
 }
+
 ul {
   margin-bottom: 0;
 }
+
 li {
   margin-bottom: 2px;
 }
+
 a {
   text-decoration: none;
 }
 
 #resume {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
   padding: 80px 100px;
   background: #fff;
   border: 1px solid #ccc;
@@ -40,25 +45,34 @@ a {
   font-size: 20px;
 }
 
+.mediumFont {
+  font-size: 16px;
+}
+
+.msFont {
+  font-size: 14px;
+}
+
 .smallFont {
   font-size: 13px;
 }
 
 .sectionBlock {
-  display: flex;
+
   width: 100%;
 }
 
 .sectionName {
-  width: 18%;
   vertical-align: top;
-  display: inline-block;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
 }
 
 .sectionContent {
-  width: 80%;
+
   vertical-align: top;
-  display: inline-block;
+  display: block;
 }
 
 .sectionContent ul {
@@ -101,7 +115,8 @@ a {
   margin-bottom: 4px;
 }
 
-.jobBlock {
+.jobBlock,
+.projectBlock {
   page-break-inside: avoid;
 }
 
@@ -111,27 +126,34 @@ a {
     margin: 0;
     font-size: 14px;
   }
+
   #resume {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 700px;
     padding: 0.5em 1em;
     border: none;
   }
+
   .sectionBlock {
     flex-direction: column;
   }
+
   .sectionContent {
     width: 100%;
   }
+
   .sectionContent .date {
     padding-right: 2em;
   }
+
   .sectionName {
     width: auto;
   }
+
   .largeFont {
     font-size: 20px;
   }
+
   .smallFont {
     font-size: 14px;
   }
@@ -141,9 +163,10 @@ a {
   body {
     background: #FFFFFF;
   }
+
   #resume {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 700px;
     padding: 0px 0px;
     border: 0px;
     background: #fff;

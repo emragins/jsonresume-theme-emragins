@@ -56,25 +56,34 @@
       font-size: 20px;
     }
 
+    .mediumFont {
+      font-size: 16px;
+    }
+
+    .msFont {
+      font-size: 14px;
+    }
+
     .smallFont {
       font-size: 13px;
     }
 
     .sectionBlock {
-      display: flex;
+
       width: 100%;
     }
 
     .sectionName {
-      width: 18%;
       vertical-align: top;
-      display: inline-block;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
     }
 
     .sectionContent {
-      width: 80%;
+
       vertical-align: top;
-      display: inline-block;
+      display: block;
     }
 
     .sectionContent ul {
@@ -117,7 +126,8 @@
       margin-bottom: 4px;
     }
 
-    .jobBlock {
+    .jobBlock,
+    .projectBlock {
       page-break-inside: avoid;
     }
 
@@ -213,6 +223,7 @@
           </span>
           {{/location}}
         </div>
+        {{#if meta.showProfiles}}
         {{#if profiles.length}}
         <div id='profilesBlock'>
           {{#each profiles}}
@@ -225,10 +236,13 @@
           {{/each}}
         </div>
         {{/if}}
+        {{/if}}
       </div>
+      {{#if picture}}
       <div class="profile-pic pull-right">
         <img src="{{picture}}" width="100px" style="position: absolute; top: -30px; right: 0;" alt="profile-pic">
       </div>
+      {{/if}}
     </div>
 
     <div class='sectionLine'></div>
@@ -245,6 +259,20 @@
     </div>
     <div class='sectionLine'></div>
     {{/if}}
+    {{#if resume.basics.achievements}}
+    <div id='summaryBlock' class="sectionBlock">
+      <div class='sectionName'>
+        <span>NOTABLE ACHIEVEMENTS</span>
+      </div>
+      <div class='sectionContent'>
+        <ul> {{#each resume.basics.achievements}}
+          <li>{{.}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class='sectionLine'></div>
+    {{/if}}
 
     {{#if resume.skills.length}}
     <div id='skills' class="sectionBlock">
@@ -253,6 +281,12 @@
       </div>
       <div class='sectionContent'>
         {{#each resume.skills}}
+        <div class='skillBlock'>
+          <span class='title'>{{#if level}} {{level}} {{/if}}: </span>
+          {{#if name}}{{name}}{{/if}}
+        </div>
+        {{/each}}
+        {{!--
         <div class='skillBlock'>
           <span class='title'>{{#if name}}{{name}}{{/if}}{{#if level}} <em>({{level}})</em>{{/if}}:</span>
           {{#if keywords.length}}
@@ -267,7 +301,7 @@
           {{/each}}
           {{/if}}
         </div>
-        {{/each}}
+        --}}
       </div>
     </div>
     <div class='sectionLine'></div>
@@ -276,26 +310,66 @@
     {{#if resume.work.length}}
     <div id='workBlock' class="sectionBlock">
       <div class='sectionName'>
-        <span>EXPERIENCE</span>
+        <span>WORK EXPERIENCE</span>
       </div>
       <div class='sectionContent'>
         {{#each resume.work}}
         <div class="jobBlock">
           <div class='blockHeader'>
-            <span class='title'>
+            <span class='title mediumFont'>
               {{#if company}}{{company}}{{/if}}{{#if position}} - {{position}}{{/if}}
             </span>
             {{#if startDate}}
-            <span class='date'>
-              {{#if startDate}}{{startDate}}{{/if}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
+            <span class='date msFont'>
+              ({{#if startDate}}{{startDate}}{{/if}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}})
             </span>
             {{/if}}
           </div>
           <div><a href='{{website}}'>{{website}}</a></div>
+          {{#if summary}}
+          <div class='summary'>{{summary}}</div>
+          {{/if}}
           {{#if highlights.length}}
           <ul class='highlights'>
             {{#each highlights}}
             <li>{{.}}</li>
+            {{/each}}
+          </ul>
+          {{/if}}
+          {{#if projects.length}}
+          <ul class='projects'>
+            {{#each projects}}
+            <div class="projectBlock">
+              <div class='blockHeader'>
+                <span class='title'>
+                  {{#if company}}{{company}}{{/if}}{{#if position}} - {{position}}{{/if}}
+                </span>
+                {{#if startDate}}
+                <span class='date'>
+                  ({{#if startDate}}{{startDate}}{{/if}} &mdash; {{#if
+                  endDate}}{{endDate}}{{else}}Present{{/if}})</span>
+                {{/if}}
+              </div>
+              <div><a href='{{website}}'>{{website}}</a></div>
+              {{#if summary}}
+              <div class='summary'>{{summary}}</div>
+              {{/if}}
+              {{#if highlights.length}}
+              <ul class='highlights'>
+                {{#each highlights}}
+                <li>{{.}}</li>
+                {{/each}}
+              </ul>
+              {{/if}}
+              {{#if details.length}}
+              <ul class='details'>
+                {{#each details}}
+                <li>{{#if text}}{{text}}{{/if}}{{#if comment}} <em>[{{comment}}]</em>{{/if}}</li>
+                {{/each}}
+              </ul>
+              {{/if}}
+              {{#unless @last}}<div class='separator'></div>{{/unless}}
+            </div>
             {{/each}}
           </ul>
           {{/if}}
@@ -430,7 +504,7 @@
           </span>
           {{/if}}
           <div class=''>
-            {{#if studyType}}{{studyType}} {{/if}} - {{#if area}}{{area}}{{/if}}{{#if gpa}}, GPA: {{gpa}}{{/if}}
+            {{#if studyType}}{{studyType}} {{/if}}{{#if area}} - {{area}}{{/if}}{{#if gpa}}, GPA: {{gpa}}{{/if}}
           </div>
           {{#if courses.length}}
           <div id='coursesBlock'>

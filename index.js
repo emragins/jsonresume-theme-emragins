@@ -17,14 +17,14 @@ function validateArray(arr) {
 function render(resume) {
   // Split courses into 3 columns
   if (validateArray(resume.education)) {
-    resume.education.forEach(function(block) {
+    resume.education.forEach(function (block) {
       if (validateArray(block.courses)) {
         splitCourses = [];
         columnIndex = 0;
         for (var i = 0; i < COURSES_COLUMNS; i++) {
           splitCourses.push([]);
         }
-        block.courses.forEach(function(course) {
+        block.courses.forEach(function (course) {
           splitCourses[columnIndex].push(course);
           columnIndex++;
           if (columnIndex >= COURSES_COLUMNS) {
@@ -36,26 +36,26 @@ function render(resume) {
     });
   }
 
-  PREPEND_SUMMARY_CATEGORIES.forEach(function(category) {
-    if (resume[category] !== undefined) {
-      resume[category].forEach(function(block) {
-        if (block.highlights === undefined) {
-          block.highlights = [];
-        }
-        if (block.summary) {
-          block.highlights.unshift(block.summary);
-          delete block.summary;
-        }
-      });
-    }
-  });
+  // PREPEND_SUMMARY_CATEGORIES.forEach(function(category) {
+  //   if (resume[category] !== undefined) {
+  //     resume[category].forEach(function(block) {
+  //       if (block.highlights === undefined) {
+  //         block.highlights = [];
+  //       }
+  //       if (block.summary) {
+  //         block.highlights.unshift(block.summary);
+  //         delete block.summary;
+  //       }
+  //     });
+  //   }
+  // });
 
-	var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
-	return Handlebars.compile(tpl)({
-		resume: resume
-	});
+  var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
+  return Handlebars.compile(tpl)({
+    resume: resume
+  });
 }
 
 module.exports = {
-	render: render
+  render: render
 };
